@@ -4,6 +4,5 @@ United communication portal for IRF
 
 ____________________________________
 
-Some S-H-I-T happens here
-Z
+Some Z happens here
 ____________________________________
