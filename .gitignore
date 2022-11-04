@@ -3,3 +3,6 @@
 ################################################################################
 
 /.vs
+Solution/BackendProj/obj
+Solution/BackendProj/bin
+Solution/.vs
