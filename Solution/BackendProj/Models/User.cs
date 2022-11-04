@@ -9,6 +9,13 @@ namespace BackendProj.Models
         public string login { get; set; }
         public string password { get; set; }
         [Column(TypeName = "jsonb")]
-        public string Data { get; set; }
+        public Person Data { get; set; }
+    }
+
+    public class Person
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public string Surname { get; set; }
     }
 }

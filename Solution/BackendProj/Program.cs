@@ -38,8 +38,8 @@ namespace BackendProj
             using (BackendProj.Controllers.AppContext db = new BackendProj.Controllers.AppContext())
             {
                 // создаем два объекта User
-                User user1 = new User { login = "ROck", password = "123145" };
-                User user2 = new User { login = "Alice", password = "12565124" };
+                User user1 = new User { login = "ROck", password = "123145", Data = new Person { Name = "Kolya", Age = 19, Surname = "Kupalov" } };
+                User user2 = new User { login = "Alice", password = "12565124", Data = new Person { Name = "Sanya", Age = 23, Surname = "Kropashev" } };
 
                 // добавляем их в бд
                 db.Users.AddRange(user1, user2);
@@ -53,7 +53,7 @@ namespace BackendProj
                 Console.WriteLine("Users list: ");
                 foreach (User u in users)
                 {
-                    Console.WriteLine($"{u.login} - {u.password}");
+                    Console.WriteLine($"{u.Id}.Логин: {u.login} Пароль: {u.password}  Имя: {u.Data.Name}  Фамилия: {u.Data.Surname}  Возраст: {u.Data.Age}");
                 }
             }
         }

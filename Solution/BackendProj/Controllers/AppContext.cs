@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using BackendProj.Models;
-
+using System.Text.Json;
 
 namespace BackendProj.Controllers
 {
@@ -14,7 +14,7 @@ namespace BackendProj.Controllers
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5433;Database=usersdb2;Username=postgres;Password=password");
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5433;Database=usersdb;Username=postgres;Password=password");
         }
     }
 }
