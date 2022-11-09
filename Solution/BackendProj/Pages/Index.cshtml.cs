@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using BackendProj.Models;
+using BackendProj.Controllers;
 
 namespace BackendProj.Pages
 {
