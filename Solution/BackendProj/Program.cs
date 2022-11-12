@@ -52,14 +52,14 @@ namespace BackendProj
             using (BackendProj.Controllers.AppContext db = new BackendProj.Controllers.AppContext())
             {
                 // создаем два объекта User
-                User user1 = new User { login = "ROck", password = "123145", Data = new Person { Name = "Kolya", Age = 19, Surname = "Kupalov", Image = image_first_person } };
-                User user2 = new User { login = "Alice", password = "12565124", Data = new Person { Name = "Sanya", Age = 23, Surname = "Kropashev", Image = image_second_person } };
+                User user1 = new User { login = "ROck", password = "123145", Data = new Person { FIO = "Stepanov Kolya Robertovi4", Birthday = "24.12.02", Image = image_first_person } };
+                User user2 = new User { login = "Alice", password = "12565124", Data = new Person { FIO = "Kongratev Mihail Vasilievi4", Birthday = "16.03.13", Image = image_second_person } };
 
-                user1.Data.Salt = Crypto.CreateSalt(5);
-                string hashpassword1 = Crypto.GenerateHash(user1.password, user1.Data.Salt);
+                user1.Salt = Crypto.CreateSalt(5);
+                string hashpassword1 = Crypto.GenerateHash(user1.password, user1.Salt);
                 string oldpassword = user1.password;
                 user1.password = hashpassword1;
-                if(Crypto.AreEqual(oldpassword,hashpassword1, user1.Data.Salt))
+                if(Crypto.AreEqual(oldpassword,hashpassword1, user1.Salt))
                 {
                     Console.WriteLine("Пароли совпадают");
                 }    
@@ -76,7 +76,7 @@ namespace BackendProj
                 Console.WriteLine("Users list: ");
                 foreach (User u in users)
                 {
-                    Console.WriteLine($"{u.Id}.Логин: {u.login} Пароль: {u.password}  Имя: {u.Data.Name}  Фамилия: {u.Data.Surname}  Возраст: {u.Data.Age}");
+                    Console.WriteLine($"{u.Id}.Логин: {u.login} Пароль: {u.password}  ФИО: {u.Data.FIO}  День рождения: {u.Data.Birthday}");
                 }
             }
         }
