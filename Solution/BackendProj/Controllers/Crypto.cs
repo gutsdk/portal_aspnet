@@ -5,7 +5,7 @@ namespace BackendProj.Controllers
 {
     public class Crypto
     {
-        public string CreateSalt(int size)
+        public static string  CreateSalt(int size)
         {
             RandomNumberGenerator rng = RandomNumberGenerator.Create();
             byte[] buff = new byte[size];
@@ -13,7 +13,7 @@ namespace BackendProj.Controllers
             return Convert.ToBase64String(buff);
         }
 
-        public string GenerateHash(string input, string salt)
+        public static string GenerateHash(string input, string salt)
         {
             byte[] bytes = Encoding.UTF8.GetBytes(input + salt);
             SHA256 sHA256String = SHA256.Create();
@@ -21,7 +21,7 @@ namespace BackendProj.Controllers
             return Convert.ToBase64String(hash);
         }
 
-        public bool AreEqual(string plainTextInput, string hashedInput, string salt)
+        public static bool AreEqual(string plainTextInput, string hashedInput, string salt)
         {
             string newHashedPin = GenerateHash(plainTextInput, salt);
             return newHashedPin.Equals(hashedInput);
