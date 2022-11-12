@@ -1,15 +1,18 @@
-﻿@page
-@model IndexModel
-@{
-    ViewData["Title"] = "Home page";
-    using (BackendProj.Controllers.AppContext db = new BackendProj.Controllers.AppContext())
-    {
-        var users = db.Users.ToList();
-    }
-}
+﻿<!DOCTYPE html>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <p> Sanya GAY</p>
-</div>
+<html>
+    <head>
+        <meta name="viewport" content="width=device=width"/>
+        <script type="text/javascript">
+            constants = {
+                getPage: '@Url.RouteUrl("DefaultApi", new {controller = "Blog", action = "page" })'
+            }
+        </script>
+        <title>Index</title>
+    </head>
+    <body>
+        <div id="content">
+        </div>
+        <script type="text/javascript" src="@Url.Content("~/assets/bundle.js")"></script>
+    </body>
+</html>
