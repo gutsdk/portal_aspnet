@@ -36,12 +36,16 @@ namespace BackendProj
 
             app.Run();
 
+            //тест запроса по логину и паролю
+            var authorization = new Authorization();
+            Models.User user = authorization.GetUser("ROck", "123145");
+
             //Задание картинки
-            Image img = Image.FromFile("ImageOfPerson1.jpeg");
+            Image img = Image.FromFile("wwwroot\\ImageOfPerson1.jpeg");
             ImageConverter converter = new ImageConverter();
             byte[] image_first_person = (byte[])converter.ConvertTo(img, typeof(byte[]));
 
-            img = Image.FromFile("ImageOfPerson2.jpeg");
+            img = Image.FromFile("wwwroot\\ImageOfPerson2.jpeg");
             byte[] image_second_person = (byte[])converter.ConvertTo(img, typeof(byte[]));
 
             //Добавляем в БД
