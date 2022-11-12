@@ -2,9 +2,13 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
-    
+
     Models.User? user = Controllers.Authorization.GetUser("ROck", "123145");
-        
+    byte[] image = user.Data.Image;
+    MemoryStream ms = new MemoryStream(image);
+    System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
+    var stream = new MemoryStream();
+    img.Save("wwwroot\\"+user.Id.ToString()+" .jpeg");
 }
 
 <div class="text-center">
@@ -12,7 +16,7 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     <p> Sanya GAY</p>
     <p> @user.Data.Name </p>
-    <p> <img src="ImageOfPerson1.jpeg" /> </p>
+    <p> <img src="@user.Id .jpeg" /> </p>
 </div>
 <!DOCTYPE html>
 
