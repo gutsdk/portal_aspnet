@@ -3,6 +3,7 @@ using System.Linq;
 using BackendProj.Models;
 using BackendProj.Controllers;
 using System.Drawing;
+using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 namespace BackendProj
 {
@@ -37,8 +38,8 @@ namespace BackendProj
             app.Run();
 
             //тест запроса по логину и паролю
-            var authorization = new Authorization();
-            Models.User user = authorization.GetUser("ROck", "123145");
+            //var authorization = new Authorization();
+            //Models.User user = authorization.GetUser("ROck", "123145");
 
             //Задание картинки
             Image img = Image.FromFile("wwwroot\\ImageOfPerson1.jpeg");
@@ -54,6 +55,15 @@ namespace BackendProj
                 // создаем два объекта User
                 User user1 = new User { login = "ROck", password = "123145", Data = new Person { Name = "Kolya", Age = 19, Surname = "Kupalov", Image = image_first_person } };
                 User user2 = new User { login = "Alice", password = "12565124", Data = new Person { Name = "Sanya", Age = 23, Surname = "Kropashev", Image = image_second_person } };
+                Crypto crypto = new Crypto();
+                string salt = crypto.CreateSalt(5);
+                string hashpassword1 = crypto.GenerateHash(user1.password, salt);
+                string oldpassword = user1.password;
+                user1.password = hashpassword1;
+                if(crypto.AreEqual(oldpassword,hashpassword1,salt))
+                {
+                    Console.WriteLine("Пароли совпадают");
+                }    
 
                 // добавляем их в бд
                 db.Users.AddRange(user1, user2);
