@@ -9,13 +9,9 @@ namespace BackendProj.Controllers
         {
             AppContext db = new AppContext();
 
-            var user = db.Users.AsEnumerable().Where(user => user.login == login && Crypto.AreEqual(password, user.password, user.Salt)).ToList();
+            var user = db.Users.AsEnumerable().FirstOrDefault(user => user.login == login && Crypto.AreEqual(password, user.password, user.Salt));
 
-            if (user == null || !user.Any())
-            {
-                return null;
-            }
-            return user[0];
+            return user;
         }
     }
 }
