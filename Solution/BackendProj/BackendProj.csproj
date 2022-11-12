@@ -9,6 +9,11 @@
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1development_1json__JsonSchema="https://citation-file-format.github.io/1.2.0/schema.json" /></VisualStudio></ProjectExtensions>
 
   <ItemGroup>
+    <None Include="wwwroot\ImageOfPerson1.jpeg" />
+    <None Include="wwwroot\ImageOfPerson2.jpeg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.7" />
     <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
   </ItemGroup>
