@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using BackendProj.Models;
 using BackendProj.Controllers;
+using System.Drawing;
 
 namespace BackendProj.Pages
 {
