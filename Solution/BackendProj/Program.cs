@@ -38,8 +38,7 @@ namespace BackendProj
             app.Run();
 
             //тест запроса по логину и паролю
-            //var authorization = new Authorization();
-            //Models.User user = authorization.GetUser("ROck", "123145");
+            Models.User? user = Authorization.GetUser("ROck", "123155");
 
             //«адание картинки
             Image img = Image.FromFile("wwwroot\\ImageOfPerson1.jpeg");

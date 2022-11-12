@@ -1,19 +1,15 @@
 ﻿using BackendProj.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BackendProj.Controllers
 {
     public class Authorization
     {
-        public AppContext db;
-
-        public Authorization()
+        public static User? GetUser(string login, string password)
         {
-            db = new AppContext();
-        }
+            AppContext db = new AppContext();
 
-        public User? GetUser(string login, string password)
-        {
-            var user = db.Users.Where(user => user.login == login && user.password == password).ToList();
+            var user = db.Users.AsEnumerable().Where(user => user.login == login && Crypto.AreEqual(password, user.password, user.Data.Salt)).ToList();
 
             if (user == null || !user.Any())
             {
