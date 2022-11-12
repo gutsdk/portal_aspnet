@@ -1,4 +1,21 @@
-﻿<!DOCTYPE html>
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+    using (BackendProj.Controllers.AppContext db = new BackendProj.Controllers.AppContext())
+    {
+        var users = db.Users.ToList();
+    }
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p> Sanya GAY</p>
+    <p> <img src="ImageOfPerson1.jpeg" /> </p>
+</div>
+
+<!DOCTYPE html>
 
 <html>
     <head>
