@@ -18,5 +18,6 @@ namespace BackendProj.Models
         public int? Age { get; set; }
         public string? Surname { get; set; }
         public byte[]? Image { get; set; }
+        public string? Salt { get; set; }
     }
 }

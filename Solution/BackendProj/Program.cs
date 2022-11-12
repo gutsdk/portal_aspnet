@@ -56,11 +56,11 @@ namespace BackendProj
                 User user1 = new User { login = "ROck", password = "123145", Data = new Person { Name = "Kolya", Age = 19, Surname = "Kupalov", Image = image_first_person } };
                 User user2 = new User { login = "Alice", password = "12565124", Data = new Person { Name = "Sanya", Age = 23, Surname = "Kropashev", Image = image_second_person } };
                 Crypto crypto = new Crypto();
-                string salt = crypto.CreateSalt(5);
-                string hashpassword1 = crypto.GenerateHash(user1.password, salt);
+                user1.Data.Salt = crypto.CreateSalt(5);
+                string hashpassword1 = crypto.GenerateHash(user1.password, user1.Data.Salt);
                 string oldpassword = user1.password;
                 user1.password = hashpassword1;
-                if(crypto.AreEqual(oldpassword,hashpassword1,salt))
+                if(crypto.AreEqual(oldpassword,hashpassword1, user1.Data.Salt))
                 {
                     Console.WriteLine("Пароли совпадают");
                 }    
