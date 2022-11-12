@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using BackendProj.Models;
 using BackendProj.Controllers;
+using System.Drawing;
 
 namespace BackendProj
 {
@@ -34,12 +35,21 @@ namespace BackendProj
             app.MapRazorPages();
 
             app.Run();
+
+            //Задание картинки
+            Image img = Image.FromFile("ImageOfPerson1.jpeg");
+            ImageConverter converter = new ImageConverter();
+            byte[] image_first_person = (byte[])converter.ConvertTo(img, typeof(byte[]));
+
+            img = Image.FromFile("ImageOfPerson2.jpeg");
+            byte[] image_second_person = (byte[])converter.ConvertTo(img, typeof(byte[]));
+
             //Добавляем в БД
             using (BackendProj.Controllers.AppContext db = new BackendProj.Controllers.AppContext())
             {
                 // создаем два объекта User
-                User user1 = new User { login = "ROck", password = "123145", Data = new Person { Name = "Kolya", Age = 19, Surname = "Kupalov" } };
-                User user2 = new User { login = "Alice", password = "12565124", Data = new Person { Name = "Sanya", Age = 23, Surname = "Kropashev" } };
+                User user1 = new User { login = "ROck", password = "123145", Data = new Person { Name = "Kolya", Age = 19, Surname = "Kupalov", Image = image_first_person } };
+                User user2 = new User { login = "Alice", password = "12565124", Data = new Person { Name = "Sanya", Age = 23, Surname = "Kropashev", Image = image_second_person } };
 
                 // добавляем их в бд
                 db.Users.AddRange(user1, user2);
