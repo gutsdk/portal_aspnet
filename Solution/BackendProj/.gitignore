@@ -1,0 +1,9 @@
+﻿################################################################################
+# Данный GITIGNORE-файл был автоматически создан Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+Solution/BackendProj/obj
+Solution/BackendProj/bin
+Solution/.vs
+Solution/BackendProj/node_modules
