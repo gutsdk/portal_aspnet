@@ -11,6 +11,15 @@ namespace BackendProj.Pages
         public static  string password { get; set; }
         public static string login { get; set; }    
         public User user { get; set; }
+        public void OnPost(string about)
+        {
+            user = Authorization.GetUser(login, password);
+            if (user.Data.About == about)
+                return;
+            user.Data.About = about;    
+            ChangeDB.SetUser(user);
+            return;
+        }
         public void OnGet(string log, string pass)
         {
             user = Authorization.GetUser(login, password);

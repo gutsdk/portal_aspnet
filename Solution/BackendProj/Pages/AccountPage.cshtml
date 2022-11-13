@@ -39,8 +39,10 @@
         <td>
                 <p><h1 class="classs">@Model.user.Data.FIO</h1></p>
                 <p><h3 class="classs">О себе</h3></p>
-                <p class="classs"><textarea rows="5" cols="50" resize"="none">@Model.user.Data.About</textarea></p>
+                <form method="post">
+                <p class="classs"><textarea rows="5" cols="50" resize"="none" name="about">@Model.user.Data.About</textarea></p>
                 <p class="classs"><input type="submit" value="Сохранить" /></p>
+                </form>
         </td>
     </tr>
     </table>
@@ -55,6 +57,6 @@
     <p> <h3>Дата приема</h3></p>
     <ul><li>@Model.user.Data.DateOfEmploy</li></ul>
     <p> <h3>Опыт работы</h3></p>
-    <ul><li>@Model.user.Data.Experience</li></ul>
+    <ul><li>@Model.user.Data.Experience лет</li></ul>
 </body>
 </html>
