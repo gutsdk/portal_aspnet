@@ -25,18 +25,25 @@
             resize: none; /* Запрещаем изменять размер */
             width:400px;
             height:120px;
-
+        }
+        .classs{
+            margin-left:15px
         }
     </style>
 </head>
 
 <body>
-    <p><img align="left" src="  @Model.user.Id .jpeg" width="200" height="250" /> </p>
-    <p> <h1>   @Model.user.Data.FIO</h1></p>
-    <p> <h3>   О себе</h3></p>
-    <textarea rows="5" cols="50"  resize"="none">@Model.user.Data.About</textarea>
-    <input type="submit" value="Сохранить" />
-    <p> <h2>Личные данные</h2></p>
+    <table>
+    <tr >
+        <td><p><img align="left" src="  @Model.user.Id .jpeg" width="200" height="250" /> </p></td>
+        <td>
+                <p><h1 class="classs">@Model.user.Data.FIO</h1></p>
+                <p><h3 class="classs">О себе</h3></p>
+                <p class="classs"><textarea rows="5" cols="50" resize"="none">@Model.user.Data.About</textarea></p>
+                <p class="classs"><input type="submit" value="Сохранить" /></p>
+        </td>
+    </tr>
+    </table>
     <p> <h3>Дата рождения</h3></p>
     <ul><li>@Model.user.Data.Birthday</li></ul>
     <p> <h3>Номер телефона</h3></p>
