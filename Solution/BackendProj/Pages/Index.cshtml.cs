@@ -8,16 +8,14 @@ namespace BackendProj.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IActionResult OnPost(string login, string password)
         {
-            _logger = logger;
-        }
-
-        public void OnGet()
-        {
-
+            if (Authorization.GetUser(login, password) == null)
+                return NotFound("Пользователь не найден");
+            AccountPageModel.password = password;
+            AccountPageModel.login = login; 
+            return RedirectToPage("/AccountPage");
         }
     }
 }

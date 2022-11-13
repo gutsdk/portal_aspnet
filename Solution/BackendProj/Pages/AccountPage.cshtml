@@ -1,0 +1,53 @@
+﻿@page
+@model BackendProj.Pages.AccountPageModel
+@{
+    ViewData["Title"] = "Home page";
+
+    //Models.User? user = Controllers.Authorization.GetUser("chopix", "123456");
+    if (@Model.user != null)
+    {
+        byte[] image = Model.user.Data.Image;
+        MemoryStream ms = new MemoryStream(image);
+        System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
+        var stream = new MemoryStream();
+        img.Save("wwwroot\\" + Model.user.Id.ToString() + " .jpeg");
+    }
+}
+
+<div class="text-center">
+    <p> Sanya GAY</p>
+</div>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device=width" />
+    <link rel="stylesheet" href="Style.css" />
+    <style>
+        textarea {
+            resize: none; /* Запрещаем изменять размер */
+        }
+    </style>
+</head>
+
+<body>
+    <p><img align="left" src="@Model.user.Id .jpeg" width="200" height="250" /> </p>
+    <p> <h1>@Model.user.Data.FIO</h1></p>
+    <p> <h3>О себе</h3></p>
+    <textarea class="form-control" rows="6" cols="50" resize"="none">@Model.user.Data.About</textarea>
+    <input type="submit" value="Сохранить" />
+    <p> <h2>Личные данные</h2></p>
+    <p> <h3>Дата рождения</h3></p>
+    <ul><li>@Model.user.Data.Birthday</li></ul>
+    <p> <h3>Номер телефона</h3></p>
+    <ul><li>@Model.user.Data.PhoneNumber</li></ul>
+    <p> <h3>Образование</h3></p>
+    <ul><li>@Model.user.Data.Education</li></ul>
+    <p> <h3>Должность</h3></p>
+    <ul><li>@Model.user.Data.Doljnost</li></ul>
+    <p> <h3>Дата приема</h3></p>
+    <ul><li>@Model.user.Data.DateOfEmploy</li></ul>
+    <p> <h3>Опыт работы</h3></p>
+    <ul><li>@Model.user.Data.Experience</li></ul>
+</body>
+</html>

@@ -25,8 +25,14 @@ namespace BackendProj.Controllers
                 Data = new Person
                 {
                     FIO = "Tolstolobikov Mihail Ivanich",
+                    Doljnost = "Глава заместителей генерального директора",
+                    DateOfEmploy = "24.12.2012",
                     Birthday = "24.12.2002",
-                    Image = image_first_person
+                    PhoneNumber = "82281337228",
+                    Experience = DateTime.Now.Year - int.Parse("24.12.2012".Substring(6)),
+                    Education = "Высшее образование - специалитет, ВМКСиС",
+                    Image = image_first_person,
+                    About = "Самый ироничный, самый добрый, самый честный стример, герой Рунета 2009 года, обозреватель еды"
                 }
             };
 
@@ -39,8 +45,14 @@ namespace BackendProj.Controllers
                 Data = new Person
                 {
                     FIO = "Glavgadov Kaban Kabanovich",
+                    Doljnost = "Генеральный директор",
+                    DateOfEmploy = "20.10.2019",
                     Birthday = "14.08.2013",
-                    Image = image_second_person
+                    PhoneNumber = "88005553535",
+                    Experience = DateTime.Now.Year - int.Parse("20.10.2019".Substring(6)),
+                    Education = "Высшее образование - магистратура, Менеджмент",
+                    Image = image_second_person,
+                    About = "Люблю жизнь, но больше люблю ее изучать. Сложные вещи простым языком. Глубокий анализ, непривычный ход мысли и противоинтуитивные факты!"
                 }
             };
 
