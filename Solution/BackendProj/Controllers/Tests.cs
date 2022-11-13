@@ -49,7 +49,7 @@ namespace BackendProj.Controllers
             foreach(User user in userList)
             {
                 user.Salt = Crypto.CreateSalt(5);
-                user.password = Crypto.GenerateHash(user1.password, user.Salt);
+                user.password = Crypto.GenerateHash(user.password, user.Salt);
             }
 
             db.Users.AddRange(user1, user2);
