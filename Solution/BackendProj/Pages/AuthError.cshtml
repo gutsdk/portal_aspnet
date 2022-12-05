@@ -1,9 +1,8 @@
 ﻿@page
-@model IndexModel
+@model AuthErrorModel
 @{
     Layout = null;
 }
-
 <!DOCTYPE html>
 
 <html>
@@ -57,12 +56,15 @@
                 <br />
                 <br />
             </tr>
-            <tr align="center">
+            <tr align ="center">
                 <input class="ButtonStyle" type="submit" value="Войти" />
-            </t>
+            </tr>
+            <tr align="center">
+                <h3 class="ErrorHeader"> Неверный логин или пароль </h3>
+            </tr>
         </form>
         <span id="pass-icon"
-              style="position: relative;right: -107px;top: -75px;cursor: pointer;">
+              style="position: relative;right: -107px;top: -121px;cursor: pointer;">
             <img src="~/eye.png"
                  style="width: 30px;height: 30px;">
         </span>
