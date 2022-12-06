@@ -9,6 +9,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="~/css/Style.css" />
+    <script src="~/js/site.js"></script>
     <style>
         body {
             font-family:Montserrat; 
@@ -52,7 +53,7 @@
                 <label for="password">Введите пароль</label><br />
             </tr>
             <tr align="center">
-                <input type="password" name="password" id="password" />
+                <input type="password" name="password" id="Pass_WORD" />
                 <br />
                 <br />
             </tr>
@@ -63,10 +64,10 @@
                 <h3 class="ErrorHeader"> Неверный логин или пароль </h3>
             </tr>
         </form>
-        <span id="pass-icon"
-              style="position: relative;right: -107px;top: -121px;cursor: pointer;">
+        <span id="pass-icon" onclick="EyeClick()"
+              style="position: relative;right: -97px;top: -128px;cursor: pointer;">
             <img src="~/eye.png"
-                 style="width: 30px;height: 30px;">
+                 style="width: 50px;height: 30px;">
         </span>
     </div>
 </body>

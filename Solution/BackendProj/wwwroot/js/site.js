@@ -3,8 +3,23 @@
 
 // Write your JavaScript code.
 
+var IsPassVisible = false;
+
 function BodyLoad() {
     alert("Саня! Работай!");
     alert("Сава! Работай!");
     alert("Азат! Работай!");
+}
+
+function EyeClick() {
+    const InputPassword = document.getElementById("Pass_WORD");
+    console.log(IsPassVisible);
+    if (IsPassVisible) {
+        IsPassVisible = false;
+        InputPassword.setAttribute("type", "password");
+    }
+    else {
+        IsPassVisible = true;
+        InputPassword.setAttribute("type", "text");
+    }
 }
