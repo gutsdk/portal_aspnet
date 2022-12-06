@@ -2,3 +2,9 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+
+function BodyLoad() {
+    alert("Саня! Работай!");
+    alert("Сава! Работай!");
+    alert("Азат! Работай!");
+}
