@@ -50,8 +50,20 @@
                 </form>
         </td>
     </tr>
-    <tr style="position: relative;">
-        <input style="position: absolute; right: 10%; top: 15%" onclick="xCal(this)" onkeyup="xCal()">
+    <tr>
+        <div id="date8" style="position: relative; top: 10%; right: -30%" ></div>
+        <style>#cssworldru8{position: absolute}</style>
+        <script>
+            xCal("date8", {
+            id: "cssworldru8", // Set a unique ID
+            "class": "xcalend", // CSS class defines the appearance of the caledar
+            hide: 0, // Do not hide the calendar
+            x: 0, // Disable calendar closure button
+            autoOff: 0, // Disable auto-hide
+            to: "date8", // Place a calendar inside an element with an id=date8
+            fn: "" // Call the function with the specified name, the selection result will be transferred to it
+            });
+        </script>
     </tr>
     </table>
     <p> <h3>Дата рождения</h3></p>
