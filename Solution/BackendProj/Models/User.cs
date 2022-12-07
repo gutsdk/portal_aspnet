@@ -8,6 +8,7 @@ namespace BackendProj.Models
         public int Id { get; set; }
         public string? login { get; set; }
         public string? password { get; set; }
+        public int? role { get; set; } //0 - default, 1 - admin
         public string? Salt { get; set; }
         [Column(TypeName = "jsonb")]
         public Person? Data { get; set; }

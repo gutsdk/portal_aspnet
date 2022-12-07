@@ -7,7 +7,7 @@ namespace BackendProj.Controllers
     {
         public static User? GetUser(string login, string password)
         {
-            AppContext db = new AppContext();
+            AppDbContext db = new AppDbContext();
 
             var user = db.Users.AsEnumerable().FirstOrDefault(user => user.login == login && Crypto.AreEqual(password, user.password, user.Salt));
 
