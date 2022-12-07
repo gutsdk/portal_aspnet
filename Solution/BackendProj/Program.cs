@@ -11,7 +11,7 @@ namespace BackendProj
     {
         private static void Main(string[] args)
         {
-            Tests.DBInit();
+            //Tests.DBInit();
 
             var builder = WebApplication.CreateBuilder(args);
 

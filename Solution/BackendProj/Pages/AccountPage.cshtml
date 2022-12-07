@@ -1,17 +1,19 @@
 ﻿@page
+
 @model BackendProj.Pages.AccountPageModel
 @{
     ViewData["Title"] = "Home page";
 
     //Models.User? user = Controllers.Authorization.GetUser("chopix", "123456");
-    if (@Model.user != null)
-    {
-        byte[] image = Model.user.Data.Image;
-        MemoryStream ms = new MemoryStream(image);
-        System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
-        var stream = new MemoryStream();
-        img.Save("wwwroot\\" + Model.user.Id.ToString() + " .jpeg");
-    }
+
+    //if (@Model.user != null)
+    //{
+    //    byte[] image = Model.user.Data.Image;
+    //    MemoryStream ms = new MemoryStream(image);
+    //    System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
+    //    var stream = new MemoryStream();
+    //    img.Save("wwwroot\\" + Model.user.Id.ToString() + " .jpeg");
+    //}
 }
 
 <!DOCTYPE html>
@@ -40,7 +42,7 @@
 <body>
     <table>
     <tr >
-        <td><p><img align="left" src="  @Model.user.Id .jpeg" width="200" height="250" /> </p></td>
+        <td><p><img align="left" src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.user.Data.Image))" width="200" height="250" /> </p></td>
         <td>
                 <p><h1 class="classs">@Model.user.Data.FIO</h1></p>
                 <p><h3 class="classs">О себе</h3></p>

@@ -20,6 +20,7 @@ namespace BackendProj.Pages
             ChangeDB.SetUser(user);
             return;
         }
+
         public void OnGet(string log, string pass)
         {
             user = Authorization.GetUser(login, password);
