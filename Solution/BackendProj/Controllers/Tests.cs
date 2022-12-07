@@ -7,7 +7,7 @@ namespace BackendProj.Controllers
     {
         public static void DBInit()
         {
-            AppContext db = new AppContext();
+            AppDbContext db = new AppDbContext();
 
             Image img = Image.FromFile("wwwroot\\ImageOfPerson1.jpeg");
             ImageConverter converter = new ImageConverter();
@@ -22,6 +22,7 @@ namespace BackendProj.Controllers
             {
                 login = "chopix",
                 password = "123456",
+                role = 0,
                 Data = new Person
                 {
                     FIO = "Tolstolobikov Mihail Ivanich",
@@ -42,6 +43,7 @@ namespace BackendProj.Controllers
             {
                 login = "pondix",
                 password = "456789",
+                role = 1,
                 Data = new Person
                 {
                     FIO = "Glavgadov Kaban Kabanovich",
@@ -70,7 +72,7 @@ namespace BackendProj.Controllers
 
         public static void GetDB()
         {
-            AppContext db = new AppContext();
+            AppDbContext db = new AppDbContext();
 
             var users = db.Users.ToList();
             Console.WriteLine("Users list: ");

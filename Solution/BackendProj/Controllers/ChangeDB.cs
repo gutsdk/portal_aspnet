@@ -6,7 +6,7 @@ namespace BackendProj.Controllers
     {
         public static void SetUser(User user)
         {
-            AppContext db = new AppContext();
+            AppDbContext db = new AppDbContext();
 
             db.Update(user);
             db.SaveChanges();
