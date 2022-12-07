@@ -13,7 +13,6 @@ function BodyLoad() {
 */
 function EyeClick() {
     const InputPassword = document.getElementById("Pass_WORD");
-    console.log(IsPassVisible);
     if (IsPassVisible) {
         IsPassVisible = false;
         InputPassword.setAttribute("type", "password");
