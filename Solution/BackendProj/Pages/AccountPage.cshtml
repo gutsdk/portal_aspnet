@@ -20,6 +20,8 @@
 <head>
     <meta name="viewport" content="width=device=width" />
     <link rel="stylesheet" href="~/css/Style.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/calendar.css" />
+    <script type="text/javascript" src="~/js/calendar.js"></script>
     <style>
         body{
             font-family:Montserrat;
@@ -47,6 +49,9 @@
                 <p class="classs"><input class="ButtonStyle" type="submit" value="Сохранить" /></p>
                 </form>
         </td>
+    </tr>
+    <tr style="position: relative;">
+        <input style="position: absolute; right: 10%; top: 15%" onclick="xCal(this)" onkeyup="xCal()">
     </tr>
     </table>
     <p> <h3>Дата рождения</h3></p>
