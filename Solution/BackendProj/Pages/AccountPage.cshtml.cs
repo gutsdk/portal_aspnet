@@ -18,6 +18,7 @@ namespace BackendProj.Pages
             ChangeDB.SetUser(user);
             return;
         }
+
         public void OnGet(string log, string pass)
         {
             user = HttpContext.Session.Get<User>(IndexModel.userId);

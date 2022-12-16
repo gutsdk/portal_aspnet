@@ -1,7 +1,18 @@
 ﻿@page
+
 @model BackendProj.Pages.AccountPageModel
 @{
     ViewData["Title"] = "Home page";
+
+    //Models.User? user = Controllers.Authorization.GetUser("chopix", "123456");
+    if (@Model.user != null)
+    {
+        byte[] image = Model.user.Data.Image;
+        MemoryStream ms = new MemoryStream(image);
+        System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
+        var stream = new MemoryStream();
+        img.Save("wwwroot\\" + Model.user.Id.ToString() + " .jpeg");
+    }
 }
 
 <!DOCTYPE html>
