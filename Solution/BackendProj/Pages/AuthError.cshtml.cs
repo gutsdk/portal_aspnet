@@ -12,8 +12,11 @@ namespace BackendProj.Pages
         {
             if (Authorization.GetUser(login, password) == null)
                 return RedirectToPage("/AuthError");
-            AccountPageModel.password = password;
-            AccountPageModel.login = login;
+
+            var user = Authorization.GetUser(login, password);
+            IndexModel.userId = user.Id.ToString();
+
+            HttpContext.Session.Set<User>(IndexModel.userId, user);
             return RedirectToPage("/AccountPage");
         }
     }

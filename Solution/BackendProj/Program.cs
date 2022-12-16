@@ -5,6 +5,7 @@ using BackendProj.Controllers;
 using System.Drawing;
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
+
 namespace BackendProj
 {
     internal class Program
@@ -16,7 +17,17 @@ namespace BackendProj
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+
             builder.Services.AddRazorPages();
+
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession(options =>
+            { 
+                options.Cookie.Name = ".IRZ.Session";
+                options.IdleTimeout = TimeSpan.FromSeconds(3600);
+                options.Cookie.IsEssential = true;
+                options.Cookie.HttpOnly = true;
+            });
 
             var app = builder.Build();
 
@@ -32,8 +43,9 @@ namespace BackendProj
             app.UseStaticFiles();
 
             app.UseRouting();
-
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.MapRazorPages();
 

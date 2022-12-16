@@ -8,12 +8,10 @@ namespace BackendProj.Pages
 {
     public class AccountPageModel : PageModel
     {
-        public static  string password { get; set; }
-        public static string login { get; set; }    
-        public User user { get; set; }
+        public User user { get; set; } 
         public void OnPost(string about)
         {
-            user = Authorization.GetUser(login, password);
+            user = HttpContext.Session.Get<User>(IndexModel.userId);
             if (user.Data.About == about)
                 return;
             user.Data.About = about;    
@@ -22,7 +20,7 @@ namespace BackendProj.Pages
         }
         public void OnGet(string log, string pass)
         {
-            user = Authorization.GetUser(login, password);
+            user = HttpContext.Session.Get<User>(IndexModel.userId);
         }
     }
 }
