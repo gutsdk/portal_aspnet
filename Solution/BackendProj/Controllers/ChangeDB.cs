@@ -19,10 +19,10 @@ namespace BackendProj.Controllers
             db.Users.Add(user);
             db.SaveChanges();
         }
-        public static void DeleteUser(User user) 
+        public static void DeleteUser(User user)
         {
             AppDbContext db = new AppDbContext();
-            
+
             FreeID.FreeIDs.Add(user.Id);
             db.Remove(user);
             db.SaveChanges();
