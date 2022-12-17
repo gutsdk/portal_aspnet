@@ -66,7 +66,8 @@ namespace BackendProj.Controllers
                 user.password = Crypto.GenerateHash(user.password, user.Salt);
             }
 
-            db.Users.AddRange(user1, user2);
+            ChangeDB.AddUser(user1);
+            ChangeDB.AddUser(user2);
             db.SaveChanges();
         }
 
