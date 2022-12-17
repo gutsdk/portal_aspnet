@@ -12,7 +12,12 @@ namespace BackendProj
     {
         private static void Main(string[] args)
         {
-            //Tests.DBInit();
+            AppDbContext db = new AppDbContext();
+
+            User? user = db.Users.FirstOrDefault(u => u.Id == 2);
+            ChangeDB.DeleteUser(user);
+
+            Tests.DBInit();
 
             var builder = WebApplication.CreateBuilder(args);
 
