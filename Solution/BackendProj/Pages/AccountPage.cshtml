@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="~/css/Style.css" />
     <link rel="stylesheet" type="text/css" href="~/css/calendar.css" />
     <script type="text/javascript" src="~/js/calendar.js"></script>
+    <script type="text/javascript" src="~/js/site.js"></script>
     <style>
         body{
             font-family:Montserrat;
@@ -49,8 +50,14 @@
                 <p><h1 class="classs">@Model.user.Data.FIO</h1></p>
                 <p><h3 class="classs">О себе</h3></p>
                 <form method="post">
-                <p class="classs"><textarea rows="5" cols="50" resize"="none" name="about">@Model.user.Data.About</textarea></p>
-                <p class="classs"><input class="ButtonStyle" type="submit" value="Сохранить" /></p>
+                    <p class="classs" style="width:600px; height:120px">
+                        <textarea rows="5" cols="50" resize"="none" name="about" id="about" style="visibility:hidden; height:0px">@Model.user.Data.About</textarea>
+                        <label style="visibility:visible;" id="Label">@Model.user.Data.About</label>
+                    </p>
+                <p class="classs">
+                        <input class="ButtonStyle" onclick="ChangeAbout()" id="Change" type="button" value="Изменить" style="visibility:visible" />
+                        <input class="ButtonStyle" id="Save" type="submit" value="Сохранить" style="visibility:hidden" />
+                    </p>
                 </form>
         </td>
     </tr>
