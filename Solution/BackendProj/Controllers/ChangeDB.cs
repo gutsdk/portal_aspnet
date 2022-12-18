@@ -23,9 +23,13 @@ namespace BackendProj.Controllers
         {
             AppDbContext db = new AppDbContext();
 
-            FreeID.FreeIDs.Add(user.Id);
-            db.Remove(user);
-            db.SaveChanges();
+            User? tempUser = db.Users.FirstOrDefault(u => u.Id == user.Id);
+            if(tempUser != null)
+            {
+                FreeID.FreeIDs.Add(user.Id);
+                db.Remove(user);
+                db.SaveChanges();
+            }
         }
     }
 }
