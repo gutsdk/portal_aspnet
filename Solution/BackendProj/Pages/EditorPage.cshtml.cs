@@ -14,26 +14,25 @@ namespace BackendProj.Pages
         public User user { get; set; }
         public static byte[] NoImg { get; set; }
         public static byte[] UploadedImg { get; set; }
-        ImageConverter converter = new ImageConverter();
-
         public void OnGet()
         {
             user = Authorization.GetUser(ID);
-            NoImg = (byte[])converter.ConvertTo(Image.FromFile("wwwroot\\images\\Noname.jpg"), typeof(byte[]));
+            ImageConverter converter = new ImageConverter();
+            NoImg = (byte[])converter.ConvertTo(Image.FromFile("wwwroot\\images\\Noname.JPG"), typeof(byte[]));
         }
-
         public IActionResult OnPostSave(string fio, string about, string login, string Password, string Role, string birthD, string educ, string doljn, string date, IFormFile photo)
         {
             user = Authorization.GetUser(ID);
             if (photo != null)
             {
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", photo.FileName);
-                using (var fs = new FileStream(path, FileMode.Create))
-                {
-                    photo.CopyTo(fs);
-                }
+                var stream = new MemoryStream((int)photo.Length);
+                photo.CopyTo(stream);
+                UploadedImg = stream.ToArray();
             }
-            UploadedImg = (byte[])converter.ConvertTo(Image.FromFile("wwwroot\\images\\" + photo.FileName), typeof(byte[]));
+            else {
+                UploadedImg = NoImg;
+            }
+
             if (!IsEditor)
             {
                 User newUser = new User
