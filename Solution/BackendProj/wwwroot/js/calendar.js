@@ -136,7 +136,7 @@
         if(j > 2) {ca += '</tr><tr>'; j = 0}
     }
     Del(document.querySelector("#" + a.id + " tbody"));
-    HTM(a.id, '<tbody><tr><th rowspan=5 valign=bottom><a href="http://cssworld.ru/en/datepicker/" target="_blank">?</a></th>' + ca + '</tr></tbody>');
+    HTM(a.id, '<tbody><tr><th rowspan=5 valign=bottom><a href="" target="_blank">?</a></th>' + ca + '</tr></tbody>');
     var k = document.querySelectorAll("#" + a.id + " tbody td");
     for(var i = 0; i < k.length; i++) {
         k[i].onclick = function() {

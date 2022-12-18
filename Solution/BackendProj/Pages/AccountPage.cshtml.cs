@@ -16,6 +16,8 @@ namespace BackendProj.Pages
                 return;
             user.Data.About = about;    
             ChangeDB.SetUser(user);
+            HttpContext.Session.Remove(IndexModel.userId);
+            HttpContext.Session.Set(IndexModel.userId, user);
             return;
         }
 
