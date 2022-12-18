@@ -22,3 +22,15 @@ function EyeClick() {
         InputPassword.setAttribute("type", "text");
     }
 }
+
+function ChangeAbout() {
+    const Change = document.getElementById("Change");
+    const Save = document.getElementById("Save");
+    const About = document.getElementById("about");
+    const Label = document.getElementById("Label");
+
+    Change.setAttribute("style", "visibility:hidden; height:0px; width:0px");
+    Save.setAttribute("style", "visibility:visible");
+    About.setAttribute("style", "visibility:visible");
+    Label.setAttribute("style", "visibility:hidden; height:0px");
+}
