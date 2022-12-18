@@ -10,6 +10,11 @@ namespace BackendProj.Models
         public string? password { get; set; }
         public int? role { get; set; } //0 - default, 1 - admin
         public string? Salt { get; set; }
+        public virtual ICollection<ExtraEducation> ExtraEducations { get; set; }
+        public User()
+        {
+            ExtraEducations = new List<ExtraEducation>();
+        }
         [Column(TypeName = "jsonb")]
         public Person? Data { get; set; }
     }
