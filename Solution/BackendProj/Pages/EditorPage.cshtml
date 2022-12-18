@@ -33,7 +33,7 @@
 </head>
 
 <body>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
     <table>
         <tr>
             @if(EditorPageModel.IsEditor)
@@ -47,15 +47,13 @@
                             </td>
                         </tr>
                     </table>
-                    <input type="file" name="photo" asp-page-handler="Photo" multiple accept="image/*,image/jpeg">
+                    <input type="file" name="photo" accept="image/*,image/jpeg">
                     <p> <h3>Логин</h3></p>
                     <ul><li><textarea rows="1" cols="67" resize"="none" name="Login">@Model.user.login</textarea></li></ul>
                     <p> <h3>Роль</h3></p>
                     <ul><li><textarea rows="1" cols="67" resize"="none" name="Role">@Model.user.role</textarea></li></ul>
                     <p> <h3>Дата рождения</h3></p>
                     <ul><li><textarea rows="1" cols="67" resize"="none" name="birthD">@Model.user.Data.Birthday</textarea></li></ul>
-                    <p> <h3>Номер телефона</h3></p>
-                    <ul><li><textarea rows="1" cols="67" resize"="none" name="phone">@Model.user.Data.PhoneNumber</textarea></li></ul>
                     <p> <h3>Образование</h3></p>
                     <ul><li><textarea rows="1" cols="67" resize"="none" name="educ">@Model.user.Data.Education</textarea></li></ul>
                     <p> <h3>Должность</h3></p>
@@ -75,7 +73,7 @@
                             </td>
                         </tr>
                     </table>
-                    <input type="file" name="photo" multiple accept="image/*,image/jpeg">
+                    <input type="file" name="photo" accept="image/*,image/jpeg">
                     <p> <h3>Логин</h3></p>
                     <ul><li><textarea rows="1" cols="67" resize"="none" name="Login"></textarea></li></ul>
                     <p> <h3>Пароль</h3></p>
@@ -84,8 +82,6 @@
                     <ul><li><textarea rows="1" cols="67" resize"="none" name="Role"></textarea></li></ul>
                     <p> <h3>Дата рождения</h3></p>
                     <ul><li><textarea rows="1" cols="67" resize"="none" name="birthD"></textarea></li></ul>
-                    <p> <h3>Номер телефона</h3></p>
-                    <ul><li><textarea rows="1" cols="67" resize"="none" name="phone"></textarea></li></ul>
                     <p> <h3>Образование</h3></p>
                     <ul><li><textarea rows="1" cols="67" resize"="none" name="educ"></textarea></li></ul>
                     <p> <h3>Должность</h3></p>

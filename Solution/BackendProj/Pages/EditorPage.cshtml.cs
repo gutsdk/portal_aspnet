@@ -12,17 +12,24 @@ namespace BackendProj.Pages
         public static int ID{ get; set; }   
         public static bool IsEditor { get; set; }
         public User user { get; set; }
-        public static byte[] NoImg { get; set; }    
+        public static byte[] NoImg { get; set; }
+        public static byte[] UploadedImg { get; set; }
+        ImageConverter converter = new ImageConverter();
+
         public void OnGet()
         {
             user = Authorization.GetUser(ID);
-            ImageConverter converter = new ImageConverter();
-            Image img = Image.FromFile("wwwroot\\images\\Noname.JPG");
-            NoImg = (byte[])converter.ConvertTo(img, typeof(byte[]));
+            NoImg = (byte[])converter.ConvertTo(Image.FromFile("wwwroot\\images\\Noname.JPG"), typeof(byte[]));
         }
-        public IActionResult OnPostSave(string fio, string about, string login, string Password, string Role, string birthD, string phone, string educ, string doljn, string date)
+        public IActionResult OnPostSave(string fio, string about, string login, string Password, string Role, string birthD, string educ, string doljn, string date, IFormFile photo)
         {
             user = Authorization.GetUser(ID);
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", photo.FileName);
+            using (var fs = new FileStream(path, FileMode.Create))
+            {
+                photo.CopyTo(fs);
+            }
+            UploadedImg = (byte[])converter.ConvertTo(Image.FromFile("wwwroot\\images\\" + photo.FileName), typeof(byte[]));
             if (!IsEditor)
             {
                 User newUser = new User
@@ -36,11 +43,9 @@ namespace BackendProj.Pages
                         Doljnost = doljn,
                         DateOfEmploy = date,
                         Birthday = birthD,
-                        PhoneNumber = phone,
                         Experience = DateTime.Now.Year - int.Parse(date.Substring(6)),
                         Education = educ,
-                        //Image = user.Data.Image,
-                        Image = NoImg,
+                        Image = UploadedImg,
                         About = about
                     }
                 };
@@ -59,10 +64,10 @@ namespace BackendProj.Pages
                 newUser.Data.Doljnost = doljn;
                 newUser.Data.DateOfEmploy = date;
                 newUser.Data.Birthday = birthD;
-                newUser.Data.PhoneNumber = phone;
                 newUser.Data.Experience = DateTime.Now.Year - int.Parse(date.Substring(6));
                 newUser.Data.Education = educ;
                 newUser.Data.About = about;
+                if (photo != null) newUser.Data.Image = UploadedImg;
                 ChangeDB.SetUser(newUser);
             }
             return RedirectToPage("/Admin");
@@ -73,12 +78,6 @@ namespace BackendProj.Pages
             user = Authorization.GetUser(ID);
             if(IsEditor)
                 Controllers.ChangeDB.DeleteUser(user);
-            return RedirectToPage("/Admin");
-        }
-        public IActionResult OnPostPhoto( )
-        {
-            user = Authorization.GetUser(ID);
-            Controllers.ChangeDB.DeleteUser(user);
             return RedirectToPage("/Admin");
         }
     }
