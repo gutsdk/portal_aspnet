@@ -24,10 +24,13 @@ namespace BackendProj.Pages
         public IActionResult OnPostSave(string fio, string about, string login, string Password, string Role, string birthD, string educ, string doljn, string date, IFormFile photo)
         {
             user = Authorization.GetUser(ID);
-            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", photo.FileName);
-            using (var fs = new FileStream(path, FileMode.Create))
+            if (photo != null)
             {
-                photo.CopyTo(fs);
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", photo.FileName);
+                using (var fs = new FileStream(path, FileMode.Create))
+                {
+                    photo.CopyTo(fs);
+                }
             }
             UploadedImg = (byte[])converter.ConvertTo(Image.FromFile("wwwroot\\images\\" + photo.FileName), typeof(byte[]));
             if (!IsEditor)
@@ -69,6 +72,11 @@ namespace BackendProj.Pages
                 newUser.Data.About = about;
                 if (photo != null) newUser.Data.Image = UploadedImg;
                 ChangeDB.SetUser(newUser);
+            }
+            if (ID == Convert.ToInt32(IndexModel.userId))
+            {
+                HttpContext.Session.Remove(IndexModel.userId);
+                HttpContext.Session.Set(IndexModel.userId, user);
             }
             return RedirectToPage("/Admin");
 
