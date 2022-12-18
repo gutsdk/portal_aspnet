@@ -19,8 +19,9 @@ namespace BackendProj.Pages
         public void OnGet()
         {
             user = Authorization.GetUser(ID);
-            NoImg = (byte[])converter.ConvertTo(Image.FromFile("wwwroot\\images\\Noname.JPG"), typeof(byte[]));
+            NoImg = (byte[])converter.ConvertTo(Image.FromFile("wwwroot\\images\\Noname.jpg"), typeof(byte[]));
         }
+
         public IActionResult OnPostSave(string fio, string about, string login, string Password, string Role, string birthD, string educ, string doljn, string date, IFormFile photo)
         {
             user = Authorization.GetUser(ID);
