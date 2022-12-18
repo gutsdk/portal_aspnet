@@ -18,7 +18,7 @@ namespace BackendProj.Pages
             userId = user.Id.ToString();
 
             HttpContext.Session.Set<User>(userId, user);
-            return RedirectToPage("/AccountPage");
+                return RedirectToPage("/AccountPage");
         }
         public void OnGet()
         {

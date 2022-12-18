@@ -1,0 +1,44 @@
+﻿@page
+@model BackendProj.Pages.AdminModel
+@{
+    Layout = "_Layout";
+}
+<html>
+    <head>
+    <link rel="stylesheet" href="~/css/Style.css" />
+    </head>
+<body>
+    <div>
+        <h3>Список пользователей</h3>
+            <table>
+                <tr align="center">
+                    <td><h5>ФИО работника</h5></td>
+                    <td><h5>  Роль</h5></td>
+                    <td> <input class="Button" type="submit" value="Добавить пользователя" /></td>
+                </tr>
+                @foreach (var s in Model.db.Users)
+                {
+                <form method="post">
+                    <tr align="center">
+                    <input type="hidden" name="ID" value=@s.Id />
+                        <td><p>@s.Data.FIO</p></td>
+                        @if (s.role == 1)
+                        {
+                            <td><p>  Администратор</p></td>
+                            if(s.Id.ToString()==IndexModel.userId)
+                            {
+                            <td> <input class="LilButton" type="submit" value="Изменить" /></td>
+                            }
+                        }
+                        else
+                        {
+                            <td><p>  Пользователь</p></td>
+                            <td> <input class="LilButton" type="submit" value="Изменить" /></td>
+                        }
+                    </tr>
+                </form>
+                }
+            </table>
+    </div>
+</body>
+</html>

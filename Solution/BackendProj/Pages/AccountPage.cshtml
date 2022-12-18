@@ -3,7 +3,10 @@
 @model BackendProj.Pages.AccountPageModel
 @{
     ViewData["Title"] = "Home page";
-
+    if (Model.user.role == 0)
+        Layout = "_Layout";
+    else
+        Layout = "_AdminLayout";
     //Models.User? user = Controllers.Authorization.GetUser("chopix", "123456");
     //if (@Model.user != null)
     //{
