@@ -14,7 +14,7 @@
                 <tr align="center">
                     <td><h5>ФИО работника</h5></td>
                     <td><h5>  Роль</h5></td>
-                    <td> <input class="Button" type="submit" value="Добавить пользователя" /></td>
+                <form method="post"><td> <input class="Button" type="submit" asp-page-handler="Add" value="Добавить пользователя" /></td></form>
                 </tr>
                 @foreach (var s in Model.db.Users)
                 {
@@ -27,13 +27,13 @@
                             <td><p>  Администратор</p></td>
                             if(s.Id.ToString()==IndexModel.userId)
                             {
-                            <td> <input class="LilButton" type="submit" value="Изменить" /></td>
+                            <td> <input class="LilButton" type="submit" value="Изменить" asp-page-handler="Edit" /></td>
                             }
                         }
                         else
                         {
                             <td><p>  Пользователь</p></td>
-                            <td> <input class="LilButton" type="submit" value="Изменить" /></td>
+                        <td> <input class="LilButton" type="submit" value="Изменить" asp-page-handler="Edit" /></td>
                         }
                     </tr>
                 </form>

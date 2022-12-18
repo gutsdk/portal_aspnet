@@ -36,34 +36,74 @@
     <form method="post">
     <table>
         <tr>
-            <td><p><img align="left" src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.user.Data.Image))" width="200" height="250" /> </p></td>
-            <td>
-                <p><textarea rows="1" cols="45" resize"="none" name="fio">@Model.user.Data.FIO</textarea></p>
-                <p><h3 class="classs">О себе</h3></p>
-                <p class="classs"><textarea class="about" rows="5" cols="45" resize"="none" name="about">@Model.user.Data.About</textarea></p>
-            </td>
-        </tr>
-    </table>
-    <p> <h3>Логин</h3></p>
-    <ul><li><textarea rows="1" cols="67" resize"="none" name="Login">@Model.user.login</textarea></li></ul>
-    <p> <h3>Пароль</h3></p>
-    <ul><li><textarea rows="1" cols="67" resize"="none" name="Password">@Model.user.password</textarea></li></ul>
-    <p> <h3>Роль</h3></p>
-    <ul><li><textarea rows="1" cols="67" resize"="none" name="Role">@Model.user.role</textarea></li></ul>
-    <p> <h3>Дата рождения</h3></p>
-    <ul><li><textarea rows="1" cols="67" resize"="none" name="birthD">@Model.user.Data.Birthday</textarea></li></ul>
-    <p> <h3>Номер телефона</h3></p>
-    <ul><li><textarea rows="1" cols="67" resize"="none" name="phone">@Model.user.Data.PhoneNumber</textarea></li></ul>
-    <p> <h3>Образование</h3></p>
-    <ul><li><textarea rows="1" cols="67" resize"="none" name="educ">@Model.user.Data.Education</textarea></li></ul>
-    <p> <h3>Должность</h3></p>
-    <ul><li><textarea rows="1" cols="67" resize"="none" name="doljn">@Model.user.Data.Doljnost</textarea></li></ul>
-    <p> <h3>Дата приема</h3></p>
-    <ul><li><textarea rows="1" cols="67" resize"="none" name="date">@Model.user.Data.DateOfEmploy</textarea></li></ul>
-    <p> <h3>Опыт работы</h3></p>
-    <ul><li><textarea rows="1" cols="67" resize"="none" name="exp">@Model.user.Data.Experience</textarea></li></ul>
-        <td><input class="ButtonStyle" type="submit" value="Сохранить" name="save"/></td>
-        <td><input class="ButtonStyle" type="submit" value="Удалить" name="delete"/></td>
+            @if(EditorPageModel.IsEditor)
+            {
+                    <table>
+                        <tr>
+                            <td><p><img align="left" src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.user.Data.Image))" width="200" height="250" name="Image" /> </p></td>
+                            <td> <p><textarea rows="1" cols="45" resize"="none" name="fio">@Model.user.Data.FIO</textarea></p>
+                                 <p><h3 class="classs">О себе</h3></p>
+                                <p class="classs"><textarea class="about" rows="5" cols="45" resize"="none" name="about">@Model.user.Data.About</textarea></p>
+                            </td>
+                        </tr>
+                    </table>
+                    <input type="file" name="photo" asp-page-handler="Photo" multiple accept="image/*,image/jpeg">
+                    <p> <h3>Логин</h3></p>
+                    <ul><li><textarea rows="1" cols="67" resize"="none" name="Login">@Model.user.login</textarea></li></ul>
+                    <p> <h3>Роль</h3></p>
+                    <ul><li><textarea rows="1" cols="67" resize"="none" name="Role">@Model.user.role</textarea></li></ul>
+                    <p> <h3>Дата рождения</h3></p>
+                    <ul><li><textarea rows="1" cols="67" resize"="none" name="birthD">@Model.user.Data.Birthday</textarea></li></ul>
+                    <p> <h3>Номер телефона</h3></p>
+                    <ul><li><textarea rows="1" cols="67" resize"="none" name="phone">@Model.user.Data.PhoneNumber</textarea></li></ul>
+                    <p> <h3>Образование</h3></p>
+                    <ul><li><textarea rows="1" cols="67" resize"="none" name="educ">@Model.user.Data.Education</textarea></li></ul>
+                    <p> <h3>Должность</h3></p>
+                    <ul><li><textarea rows="1" cols="67" resize"="none" name="doljn">@Model.user.Data.Doljnost</textarea></li></ul>
+                    <p> <h3>Дата приема</h3></p>
+                    <ul><li><textarea rows="1" cols="67" resize"="none" name="date">@Model.user.Data.DateOfEmploy</textarea></li></ul>
+            }
+                else if(!EditorPageModel.IsEditor)
+            {
+                    <table>
+                        <tr>
+                            <td><p><img align="left" src="data:image/jpeg;base64,@(Convert.ToBase64String(EditorPageModel.NoImg))" width="200" height="250" name="Image" /> </p></td>
+                            <td>
+                                <p><textarea rows="1" cols="45" resize"="none" name="fio"></textarea></p>
+                                <p><h3 class="classs">О себе</h3></p>
+                                <p class="classs"><textarea class="about" rows="5" cols="45" resize"="none" name="about"></textarea></p>
+                            </td>
+                        </tr>
+                    </table>
+                    <input type="file" name="photo" multiple accept="image/*,image/jpeg">
+                    <p> <h3>Логин</h3></p>
+                    <ul><li><textarea rows="1" cols="67" resize"="none" name="Login"></textarea></li></ul>
+                    <p> <h3>Пароль</h3></p>
+                    <ul><li><textarea rows="1" cols="67" resize"="none" name="Password"></textarea></li></ul>
+                    <p> <h3>Роль</h3></p>
+                    <ul><li><textarea rows="1" cols="67" resize"="none" name="Role"></textarea></li></ul>
+                    <p> <h3>Дата рождения</h3></p>
+                    <ul><li><textarea rows="1" cols="67" resize"="none" name="birthD"></textarea></li></ul>
+                    <p> <h3>Номер телефона</h3></p>
+                    <ul><li><textarea rows="1" cols="67" resize"="none" name="phone"></textarea></li></ul>
+                    <p> <h3>Образование</h3></p>
+                    <ul><li><textarea rows="1" cols="67" resize"="none" name="educ"></textarea></li></ul>
+                    <p> <h3>Должность</h3></p>
+                    <ul><li><textarea rows="1" cols="67" resize"="none" name="doljn"></textarea></li></ul>
+                    <p> <h3>Дата приема</h3></p>
+                    <ul><li><textarea rows="1" cols="67" resize"="none" name="date"></textarea></li></ul>
+            }
+        <td><input class="ButtonStyle" type="submit" asp-page-handler="Save" value="Сохранить" name="save" /></td>
+        <td>
+            @if(EditorPageModel.IsEditor)
+            {
+                        <input class="ButtonStyle" type="submit" value="Удалить" asp-page-handler="Delete" name="delete" />
+            }
+            else
+            {
+                        <input class="ButtonStyle" type="submit" value="Отмена" asp-page-handler="Delete" name="delete" />
+            }
+        </td>
     </form>
 </body>
 </html>

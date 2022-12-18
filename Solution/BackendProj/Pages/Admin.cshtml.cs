@@ -11,9 +11,16 @@ namespace BackendProj.Pages
         public void OnGet()
         {
         }
-        public IActionResult OnPost(int ID)
+        public IActionResult OnPostEdit(int ID)
         {
             EditorPageModel.ID = ID;
+            EditorPageModel.IsEditor = true;
+            return RedirectToPage("/EditorPage");
+        }
+        public IActionResult OnPostAdd(int ID)
+        {
+            EditorPageModel.ID = 0;
+            EditorPageModel.IsEditor = false;
             return RedirectToPage("/EditorPage");
         }
     }
