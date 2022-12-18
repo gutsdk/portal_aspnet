@@ -8,6 +8,7 @@ namespace BackendProj.Controllers
         public static void DBInit()
         {
             AppDbContext db = new AppDbContext();
+            
 
             Image img = Image.FromFile("wwwroot\\images\\ImageOfPerson1.jpeg");
             ImageConverter converter = new ImageConverter();
@@ -23,17 +24,17 @@ namespace BackendProj.Controllers
                 login = "chopix",
                 password = "123456",
                 role = 0,
+                ExtraEducationsList = new List<string> { "1", "2", "3" },
                 Data = new Person
                 {
                     FIO = "Иванов Георгий Иванович",
                     Doljnost = "Глава заместителей генерального директора",
                     DateOfEmploy = "24.12.2012",
                     Birthday = "24.12.2002",
-                    PhoneNumber = "82281337228",
                     Experience = DateTime.Now.Year - int.Parse("24.12.2012".Substring(6)),
                     Education = "Высшее образование - специалитет, ВМКСиС",
                     Image = image_first_person,
-                    About = "Самый ироничный, самый добрый, самый честный стример, герой Рунета 2009 года, обозреватель еды"
+                    About = "Самый ироничный, самый добрый, самый честный стример, герой Рунета 2009 года, обозреватель еды"                  
                 }
             };
 
@@ -50,7 +51,6 @@ namespace BackendProj.Controllers
                     Doljnost = "Генеральный директор",
                     DateOfEmploy = "20.10.2019",
                     Birthday = "14.08.2013",
-                    PhoneNumber = "88005553535",
                     Experience = DateTime.Now.Year - int.Parse("20.10.2019".Substring(6)),
                     Education = "Высшее образование - магистратура, Менеджмент",
                     Image = image_second_person,
