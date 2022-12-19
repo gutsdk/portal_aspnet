@@ -68,15 +68,37 @@
         </script>
     </tr>
     </table>
-    <p> <h3>Дата рождения</h3></p>
-    <ul><li>@Model.user.Data.Birthday</li></ul>
-    <p> <h3>Образование</h3></p>
-    <ul><li>@Model.user.Data.Education</li></ul>
-    <p> <h3>Должность</h3></p>
-    <ul><li>@Model.user.Data.Doljnost</li></ul>
-    <p> <h3>Дата приема</h3></p>
-    <ul><li>@Model.user.Data.DateOfEmploy</li></ul>
-    <p> <h3>Опыт работы</h3></p>
-    <ul><li>@Model.user.Data.Experience лет</li></ul>
+
+    <button class="accordion">Личные данные</button>
+    <div class="panel">
+        <p> <h3>Дата рождения</h3></p>
+        <ul><li>@Model.user.Data.Birthday</li></ul>
+        <p> <h3>Дата приема</h3></p>
+        <ul><li>@Model.user.Data.DateOfEmploy</li></ul>
+        <p> <h3>Опыт</h3></p>
+        <ul><li>@Model.user.Data.Experience лет - @Model.user.Data.PrevWorkPlace</li></ul>
+        <p> <h3>Должность</h3></p>
+        <ul><li>@Model.user.Data.Doljnost</li></ul>
+    </div>
+
+    <button class="accordion">Образование</button>
+    <div class="panel">
+        <p> <h3>Основное</h3></p>
+        <ul><li>@Model.user.Data.Education</li></ul>
+        <p><h3>Дополнительные курсы</h3></p>
+        <ul><li>@Model.user.Data.EducationOutsideUniversity</li></ul>
+    </div>
+
+    <button class="accordion">Достижения</button>
+    <div class="panel">
+        <p><h3>Достижения</h3></p>
+        <ul><li>@Model.user.Data.Achievments</li></ul>
+    </div>
+    
+
+    
+    
+
+    
 </body>
 </html>
