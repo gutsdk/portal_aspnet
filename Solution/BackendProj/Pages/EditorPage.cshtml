@@ -64,6 +64,13 @@
                     <ul><li><textarea rows="1" cols="63" resize"="none" name="doljn">@Model.user.Data.Doljnost</textarea></li></ul>
                     <p> <h3>Дата приема</h3></p>
                     <ul><li><textarea rows="1" cols="63" resize"="none" name="date">@Model.user.Data.DateOfEmploy</textarea></li></ul>
+                    <p> <h3>Достижения</h3></p>
+                    <ul><li><textarea rows="1" cols="63" resize"="none" name="achiv">@Model.user.Data.Achievments</textarea></li></ul>
+                    <p> <h3>Дополнительные курсы</h3></p>
+                    <ul><li><textarea rows="1" cols="63" resize"="none" name="EOU">@Model.user.Data.EducationOutsideUniversity</textarea></li></ul>
+                    <p> <h3>Предыдущее место работы</h3></p>
+                    <ul><li><textarea rows="1" cols="63" resize"="none" name="PrevWork">@Model.user.Data.PrevWorkPlace</textarea></li></ul>
+                    <ul><li><textarea rows="1" cols="63" resize"="none" name="Exp">@Model.user.Data.Experience</textarea> лет</li></ul>
             }
                 else if(!EditorPageModel.IsEditor)
             {
@@ -95,6 +102,13 @@
                     <ul><li><textarea rows="1" cols="63" resize"="none" name="doljn"></textarea></li></ul>
                     <p> <h3>Дата приема</h3></p>
                     <ul><li><textarea rows="1" cols="63" resize"="none" name="date"></textarea></li></ul>
+                    <p> <h3>Достижения</h3></p>
+                    <ul><li><textarea rows="1" cols="63" resize"="none" name="achiv"></textarea></li></ul>
+                    <p> <h3>Дополнительные курсы</h3></p>
+                    <ul><li><textarea rows="1" cols="63" resize"="none" name="EOU"></textarea></li></ul>
+                    <p> <h3>Предыдущее место работы</h3></p>
+                    <ul><li><textarea rows="1" cols="63" resize"="none" name="PrevWork"></textarea></li></ul>
+                    <ul><li><textarea rows="1" cols="63" resize"="none" name="Exp"></textarea> лет</li></ul>
             }
         <td><input class="ButtonStyle" type="submit" asp-page-handler="Save" value="Сохранить" name="save" /></td>
         <td>
