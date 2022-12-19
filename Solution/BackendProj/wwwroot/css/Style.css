@@ -22,28 +22,28 @@ h3 {
 }
 
 .ButtonStyle {
-	width: 180px;
-	height: 30px;
-	text-decoration: none;
-	color: #002856;
+	width: 150px;
+	height: 20px;
+	color: #0;
 	text-align: center;
 	font: normal 16px Montserrat;
 	border-style: none;
 	border-radius: 10px;
+	cursor: pointer;
 }
 
 .ButtonStyle:not(.active) {
 	box-shadow: inset 0 1px 1px #002856, inset 0 -1px 0px #002856, 0 9px 18px 0 rgba(0, 0, 0, 0.3), 0 5px 10px 0 rgba(0, 0, 0, 0.3), 0 0 0 1px #150a1e;
 	background-image: linear-gradient(rgba(0, 55, 125, 0.8), #002856);
-	color: rgb(0,0,0);
+	color: #fff;
 	text-shadow: #c9daf1 1px 0 15px;
 }
 
 .ButtonStyle:not(.active):hover,
 .ButtonStyle:not(.active):focus {
-	transition: color 200ms linear, text-shadow 500ms linear;
-	color: #fff;
-	text-shadow: 0 0 21px rgba(0, 55, 125, 0.8), 0 0 10px rgba(0, 55, 125, 0.8), 0 0 2px #002856;
+	transition: color 500ms linear;
+	color: #002856;
+	background-image: linear-gradient(#fff, #fff);
 }
 
 .ButtonStyle:not(:hover) {
@@ -60,9 +60,37 @@ input[type="file"] {
 	display: none;
 }
 
+input[name="educationId"] {
+	display: none;
+}
+
 .fileUploadStyle {
 	border: 0px;
 	display: inline-block;
 	padding: 6px 40px;
 	cursor: pointer;
+}
+
+ul {
+	list-style: square;
+	font-size: 18px;
+	width: 480px;
+}
+
+.liStyle {
+	color: transparent;
+	height: auto;
+	border: 5px #ccc solid;
+	border-radius: 10px;
+	padding: 6px 40px;
+	box-shadow: 0 0 10px #444;
+}
+
+.listHeader {
+	color: rgba(0, 55, 125, 0.8);
+	text-transform: uppercase;
+}
+
+.listBody {
+	color: #ccc;
 }

@@ -19,11 +19,16 @@ namespace BackendProj.Controllers
 
             List<User> userList = new List<User>();
             List<ExtraEducation> extraEducations = new List<ExtraEducation>() 
-            {   new ExtraEducation {Id = 1, Theme = "Development: организация, разработка проекта, управление рисками, оценка", Duration = "8760 ч."}, 
-                new ExtraEducation {Id = 2, Theme = "Производственный менеджмент", Duration = "96 ч."}, 
-                new ExtraEducation {Id = 3, Theme = "Производственный персонал: управление, вовлечение, эффективность", Duration = "72 ч."}, 
-                new ExtraEducation {Id = 4, Theme = "Руководитель службы безопасности", Duration = "4320 ч."}, 
-                new ExtraEducation {Id = 5, Theme = "Директор по персоналу", Duration = "120 ч."}};
+            {   new ExtraEducation {Id = 1, Theme = "Development: организация, разработка проекта, управление рисками, оценка", 
+                Description = "Расскажем от А до Я все принципы и тонкости такой сферы деятельности, как Development", Duration = "8760 ч."}, 
+                new ExtraEducation {Id = 2, Theme = "Производственный менеджмент", 
+                Description = "На курсе рассматривается эффективные способы ведения менеджерской деятельности на производстве", Duration = "96 ч."}, 
+                new ExtraEducation {Id = 3, Theme = "Производственный персонал: управление, вовлечение, эффективность", 
+                Description = "Научим вас работать с персоналом: управлять людьми, вовлекать их в ту деятельность, которой они не хотят заниматься и т.д.", Duration = "72 ч."}, 
+                new ExtraEducation {Id = 4, Theme = "Руководитель службы безопасности", 
+                Description = "Потребность в руководителях СБ существует как у предприятий, так и у крупных компаний. Научим вам быть нужными в этой сфере", Duration = "4320 ч."}, 
+                new ExtraEducation {Id = 5, Theme = "Директор по персоналу", 
+                Description = "Вы получите прочные теоретические знания и практические навыки в области управления персоналом, изучите проблемы взаимодействия с людьми", Duration = "120 ч."}};
             db.ExtraEducations.AddRange(extraEducations);
             User user1 = new User
             {
