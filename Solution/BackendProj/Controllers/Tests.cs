@@ -18,13 +18,19 @@ namespace BackendProj.Controllers
             byte[] image_second_person = (byte[])converter.ConvertTo(img, typeof(byte[]));
 
             List<User> userList = new List<User>();
-
+            List<ExtraEducation> extraEducations = new List<ExtraEducation>() 
+            {   new ExtraEducation {Id = 1, Theme = "Development: организация, разработка проекта, управление рисками, оценка", Duration = "8760 ч."}, 
+                new ExtraEducation {Id = 2, Theme = "Производственный менеджмент", Duration = "96 ч."}, 
+                new ExtraEducation {Id = 3, Theme = "Производственный персонал: управление, вовлечение, эффективность", Duration = "72 ч."}, 
+                new ExtraEducation {Id = 4, Theme = "Руководитель службы безопасности", Duration = "4320 ч."}, 
+                new ExtraEducation {Id = 5, Theme = "Директор по персоналу", Duration = "120 ч."}};
+            db.ExtraEducations.AddRange(extraEducations);
             User user1 = new User
             {
                 login = "chopix",
                 password = "123456",
                 role = 0,
-                ExtraEducationsList = new List<string> { "1", "2", "3" },
+                ExtraEducationsList = new List<string> { "1", "3" },
                 Data = new Person
                 {
                     FIO = "Иванов Георгий Иванович",
@@ -32,9 +38,12 @@ namespace BackendProj.Controllers
                     DateOfEmploy = "24.12.2012",
                     Birthday = "24.12.2002",
                     Experience = DateTime.Now.Year - int.Parse("24.12.2012".Substring(6)),
-                    Education = "Высшее образование - специалитет, ВМКСиС",
+                    PrevWorkPlace = "EPAM - Senior разработчик на C++",
+                    Education = "Высшее образование - специалитет, ВМКСиС - ИжГТУ",
+                    EducationOutsideUniversity = "Курс повышения английского языка до уровня C1 - 120 ч.",
                     Image = image_first_person,
-                    About = "Самый ироничный, самый добрый, самый честный стример, герой Рунета 2009 года, обозреватель еды"                  
+                    About = "Самый ироничный, самый добрый, самый честный стример, герой Рунета 2009 года, обозреватель еды",
+                    Achievments = "Самый лучший стример 2009"
                 }
             };
 
@@ -45,6 +54,7 @@ namespace BackendProj.Controllers
                 login = "pondix",
                 password = "456789",
                 role = 1,
+                ExtraEducationsList = new List<string> { "2", "4", "5" },
                 Data = new Person
                 {
                     FIO = "Петров Александр Игоревич",
@@ -52,9 +62,12 @@ namespace BackendProj.Controllers
                     DateOfEmploy = "20.10.2019",
                     Birthday = "14.08.2013",
                     Experience = DateTime.Now.Year - int.Parse("20.10.2019".Substring(6)),
-                    Education = "Высшее образование - магистратура, Менеджмент",
+                    PrevWorkPlace = "СКБ Контур - Директор по персоналу",
+                    Education = "Высшее образование - магистратура, Менеджмент - УдГУ",
+                    EducationOutsideUniversity = "",
                     Image = image_second_person,
-                    About = "Люблю жизнь, но больше люблю ее изучать. Сложные вещи простым языком. Глубокий анализ, непривычный ход мысли и противоинтуитивные факты!"
+                    About = "Люблю жизнь, но больше люблю ее изучать. Сложные вещи простым языком. Глубокий анализ, непривычный ход мысли и противоинтуитивные факты!",
+                    Achievments = "МСМК по волевой борьбе"
                 }
             };
 

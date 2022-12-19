@@ -11,29 +11,29 @@
     <div>
         <h3>Список пользователей</h3>
             <table>
-                <tr align="center">
+                <tr align="center" style="position:relative">
                     <td><h5>ФИО работника</h5></td>
-                    <td><h5>  Роль</h5></td>
-                <form method="post"><td> <input class="Button" type="submit" asp-page-handler="Add" value="Добавить пользователя" /></td></form>
+                    <td><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Роль</h5></td>
+                <form method="post"><td style="position:absolute; right: -80%; top: -15%"> <input class="ButtonStyle" type="submit" asp-page-handler="Add" value="Добавить" /></td></form>
                 </tr>
                 @foreach (var s in Model.db.Users)
                 {
                 <form method="post">
-                    <tr align="center">
+                    <tr align="center" style="position:relative;">
                     <input type="hidden" name="ID" value=@s.Id />
                         <td><p>@s.Data.FIO</p></td>
                         @if (s.role == 1)
                         {
-                            <td><p>  Администратор</p></td>
+                            <td style="position:absolute; right: -13%"><p>Администратор</p></td>
                             if(s.Id.ToString()==IndexModel.userId)
                             {
-                            <td> <input class="LilButton" type="submit" value="Изменить" asp-page-handler="Edit" /></td>
+                                <td style="position:absolute; right: -80%"><input class="ButtonStyle" type="submit" value="Изменить" asp-page-handler="Edit" /></td>
                             }
                         }
                         else
                         {
-                            <td><p>  Пользователь</p></td>
-                        <td> <input class="LilButton" type="submit" value="Изменить" asp-page-handler="Edit" /></td>
+                            <td style="position:absolute; right: -10%"><p>Пользователь</p></td>
+                            <td style="position:absolute; right: -80%"> <input class="ButtonStyle" type="submit" value="Изменить" asp-page-handler="Edit" /></td>
                         }
                     </tr>
                 </form>

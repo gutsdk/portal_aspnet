@@ -1,0 +1,24 @@
+﻿@page
+@model BackendProj.Pages.ExtraEducationsPage
+@{
+    if (Model.user.role == 1)
+    {
+        Layout = "_AdminLayout";
+    }
+    else
+    {
+        Layout = "_Layout";
+    }
+}
+
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="~/css/Style.css"/>
+    </head>
+    <body>
+
+    </body>
+</html>
