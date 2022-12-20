@@ -17,15 +17,13 @@
         body {
             font-family: Montserrat;
         }
-
         .about {
-            resize: none; /* Запрещаем изменять размер */
             width: 400px;
             height: 120px;
         }
-        textarea
-        {
-            resize:none
+        .datepicker {
+            position: auto;
+            width: 100px;
         }
         .classs {
             margin-left: 15px
@@ -42,9 +40,10 @@
                     <table>
                         <tr>
                             <td><p><img class="imgStyle" align="left" src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.user.Data.Image))" width="200" height="250" name="Image" /> </p></td>
-                            <td> <p>&nbsp;&nbsp;&nbsp;<textarea rows="1" cols="42" resize"="none" name="fio">@Model.user.Data.FIO</textarea></p>
+                            <td>
+                                <p>&nbsp;&nbsp;&nbsp;<textarea rows="1" cols="42" resize"="none" name="fio" required>@Model.user.Data.FIO</textarea></p>
                                  <p><h3 class="classs">О себе</h3></p>
-                                <p class="classs"><textarea class="about" rows="5" cols="45" resize"="none" name="about">@Model.user.Data.About</textarea></p>
+                                <p class="classs"><textarea class="about" rows="5" cols="45" resize"="none" name="about" required>@Model.user.Data.About</textarea></p>
                             </td>
                         </tr>
                     </table>
@@ -53,24 +52,32 @@
                         Выбрать фото
                     </label>
                     <p> <h3>Логин</h3></p>
-                    <ul><li><textarea rows="1" cols="63" resize"="none" name="Login">@Model.user.login</textarea></li></ul>
+                    <ul><li><input name="Login" value="@Model.user.login" required></li></ul>
                     <p> <h3>Роль</h3></p>
-                    <ul><li><textarea rows="1" cols="63" resize"="none" name="Role">@Model.user.role</textarea></li></ul>
+                    <ul><li><select name="Role" required>
+                        @if (@Model.user.role == 1){
+                                    <option value="0">Пользователь</option>
+                                    <option value="1" selected>Администратор</option> 
+                        } else {
+                                    <option value="0" selected>Пользователь</option>
+                                    <option value="1">Администратор</option>
+                        }
+                    </select></li></ul>
                     <p> <h3>Дата рождения</h3></p>
-                    <ul><li><textarea rows="1" cols="63" resize"="none" name="birthD">@Model.user.Data.Birthday</textarea></li></ul>
+                    <ul><li><input class="datepicker" name="birthD" value="@Model.user.Data.Birthday" onClick="xCal(this)" onKeyUp="xCal()" required></li></ul>
                     <p> <h3>Образование</h3></p>
-                    <ul><li><textarea rows="1" cols="63" resize"="none" name="educ">@Model.user.Data.Education</textarea></li></ul>
+                    <ul><li><textarea rows="1" cols="63" name="educ" required>@Model.user.Data.Education"</textarea></li></ul>
                     <p> <h3>Должность</h3></p>
-                    <ul><li><textarea rows="1" cols="63" resize"="none" name="doljn">@Model.user.Data.Doljnost</textarea></li></ul>
+                    <ul><li><textarea name="doljn" rows="1" cols="63" required>@Model.user.Data.Doljnost</textarea></li></ul>
                     <p> <h3>Дата приема</h3></p>
-                    <ul><li><textarea rows="1" cols="63" resize"="none" name="date">@Model.user.Data.DateOfEmploy</textarea></li></ul>
+                    <ul><li><input class="datepicker" name="date" value="@Model.user.Data.DateOfEmploy" onClick="xCal(this)" onKeyUp="xCal()"required ></li></ul>
                     <p> <h3>Достижения</h3></p>
-                    <ul><li><textarea rows="1" cols="63" resize"="none" name="achiv">@Model.user.Data.Achievments</textarea></li></ul>
+                    <ul><li><textarea rows="1" cols="63" resize"="none" name="achiv" required>@Model.user.Data.Achievments</textarea></li></ul>
                     <p> <h3>Дополнительные курсы</h3></p>
-                    <ul><li><textarea rows="1" cols="63" resize"="none" name="EOU">@Model.user.Data.EducationOutsideUniversity</textarea></li></ul>
+                    <ul><li><textarea rows="1" cols="63" resize"="none" name="EOU" required>@Model.user.Data.EducationOutsideUniversity</textarea></li></ul>
                     <p> <h3>Предыдущее место работы</h3></p>
-                    <ul><li><textarea rows="1" cols="63" resize"="none" name="PrevWork">@Model.user.Data.PrevWorkPlace</textarea></li></ul>
-                    <ul><li><textarea rows="1" cols="63" resize"="none" name="Exp">@Model.user.Data.Experience</textarea> лет</li></ul>
+                    <ul><li><textarea rows="1" cols="63" resize"="none" name="PrevWork" required>@Model.user.Data.PrevWorkPlace</textarea></li></ul>
+                    <ul><li><input style="width: 30px" name="Exp" value="@Model.user.Data.Experience" required>&nbsp;&nbsp;лет</li></ul>
             }
                 else if(!EditorPageModel.IsEditor)
             {
@@ -89,26 +96,27 @@
                         Выбрать фото
                     </label>
                     <p> <h3>Логин</h3></p>
-                    <ul><li><textarea rows="1" cols="63" resize"="none" name="Login"></textarea></li></ul>
-                    <p> <h3>Пароль</h3></p>
-                    <ul><li><textarea rows="1" cols="63" resize"="none" name="Password"></textarea></li></ul>
+                    <ul><li><input name="Login" required></li></ul>
                     <p> <h3>Роль</h3></p>
-                    <ul><li><textarea rows="1" cols="63" resize"="none" name="Role"></textarea></li></ul>
+                    <ul><li><select name="Role" required>
+                        <option value="0">Пользователь</option>
+                        <option value="1">Администратор</option>
+                    </select></li></ul>
                     <p> <h3>Дата рождения</h3></p>
-                    <ul><li><textarea rows="1" cols="63" resize"="none" name="birthD"></textarea></li></ul>
+                    <ul><li><input class="datepicker" name="birthD" onClick="xCal(this)" onKeyUp="xCal()" required></li></ul>
                     <p> <h3>Образование</h3></p>
-                    <ul><li><textarea rows="1" cols="63" resize"="none" name="educ"></textarea></li></ul>
+                    <ul><li><textarea name="educ" rows="1" cols="63" required></textarea></li></ul>
                     <p> <h3>Должность</h3></p>
-                    <ul><li><textarea rows="1" cols="63" resize"="none" name="doljn"></textarea></li></ul>
+                    <ul><li><textarea rows="1" cols="63" name="doljn" required></textarea></li></ul>
                     <p> <h3>Дата приема</h3></p>
-                    <ul><li><textarea rows="1" cols="63" resize"="none" name="date"></textarea></li></ul>
+                    <ul><li><input class="datepicker" name="date" onClick="xCal(this)" onKeyUp="xCal()" required></li></ul>
                     <p> <h3>Достижения</h3></p>
-                    <ul><li><textarea rows="1" cols="63" resize"="none" name="achiv"></textarea></li></ul>
+                    <ul><li><textarea rows="1" cols="63" resize"="none" name="achiv" required></textarea></li></ul>
                     <p> <h3>Дополнительные курсы</h3></p>
-                    <ul><li><textarea rows="1" cols="63" resize"="none" name="EOU"></textarea></li></ul>
+                    <ul><li><textarea rows="1" cols="63" resize"="none" name="EOU" required></textarea></li></ul>
                     <p> <h3>Предыдущее место работы</h3></p>
-                    <ul><li><textarea rows="1" cols="63" resize"="none" name="PrevWork"></textarea></li></ul>
-                    <ul><li><textarea rows="1" cols="63" resize"="none" name="Exp"></textarea> лет</li></ul>
+                    <ul><li><textarea rows="1" cols="63" resize"="none" name="PrevWork" required></textarea></li></ul>
+                    <ul><li><input style="width: 30px" name="Exp" required>&nbsp;&nbsp;лет</li></ul>
             }
         <td><input class="ButtonStyle" type="submit" asp-page-handler="Save" value="Сохранить" name="save" /></td>
         <td>

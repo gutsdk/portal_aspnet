@@ -20,7 +20,7 @@ namespace BackendProj.Pages
             ImageConverter converter = new ImageConverter();
             NoImg = (byte[])converter.ConvertTo(Image.FromFile("wwwroot\\images\\Noname.JPG"), typeof(byte[]));
         }
-        public IActionResult OnPostSave(string fio, string about, string login, string Password, string Role, string birthD, string educ, string doljn, string date, IFormFile photo)
+        public IActionResult OnPostSave(string fio, string about, string login, string Password, string Role, string birthD, string educ, string doljn, string date, IFormFile photo, string achiv, string EOU, string PrevWork, string Exp)
         {
             user = Authorization.GetUser(ID);
             if (photo != null)
@@ -46,10 +46,13 @@ namespace BackendProj.Pages
                         Doljnost = doljn,
                         DateOfEmploy = date,
                         Birthday = birthD,
-                        Experience = DateTime.Now.Year - int.Parse(date.Substring(6)),
+                        Experience = int.Parse(Exp),
                         Education = educ,
                         Image = UploadedImg,
-                        About = about
+                        About = about, 
+                        Achievments = achiv,
+                        EducationOutsideUniversity = EOU,
+                        PrevWorkPlace = PrevWork
                     }
                 };
                 newUser.Salt = Crypto.CreateSalt(5);
@@ -67,9 +70,12 @@ namespace BackendProj.Pages
                 newUser.Data.Doljnost = doljn;
                 newUser.Data.DateOfEmploy = date;
                 newUser.Data.Birthday = birthD;
-                newUser.Data.Experience = DateTime.Now.Year - int.Parse(date.Substring(6));
+                newUser.Data.Experience = int.Parse(Exp);
                 newUser.Data.Education = educ;
                 newUser.Data.About = about;
+                newUser.Data.Achievments = achiv;
+                newUser.Data.EducationOutsideUniversity = EOU;
+                newUser.Data.PrevWorkPlace = PrevWork;
                 if (photo != null) newUser.Data.Image = UploadedImg;
                 ChangeDB.SetUser(newUser);
             }
