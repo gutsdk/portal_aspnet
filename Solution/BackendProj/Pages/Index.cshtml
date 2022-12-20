@@ -15,12 +15,19 @@
     <script src="~/js/site.js"></script>
     <style>
         body {
-            font-family:Montserrat; 
+            font-family: Montserrat;
+            background-color: #ccc;
         }
-        div.center{
-            text-align:center;
-            min-height: 10em;
-            vertical-align: middle
+        .center {
+            text-align: center;
+            vertical-align: middle;
+            border-radius: 10px;
+            border: 5px #ccc solid;
+            box-shadow: 0 0 10px #444;
+            background-color: white;
+            margin-top: 6%;
+            width: 50%;
+            margin-left: 25%;
         }
     </style>
     <title>Вход в личный кабинет</title>
@@ -32,13 +39,7 @@
                 <br />
                 <br />
                 <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
+                <img src="~/images/logo.png" style="top: 50%" />
                 <br />
                 <br />
                 <br />
@@ -61,7 +62,7 @@
             <tr align="center">
                 <td style="position:relative">
                     <span id="pass_icon" onclick="EyeClick()"
-                        style="position: absolute;top: 388px;cursor: pointer;">
+                        style="position: absolute;top: 59%;cursor: pointer;">
                         <img src="~/images/eye.png"
                           style="width: 50px;height: 30px;">
                     </span>
@@ -72,6 +73,10 @@
             <tr align="center">
                 <input class="ButtonStyle" type="submit" value="Войти" />
             </tr>
+            <br />
+            <br />
+            <br />
+            <br />
         </form>
     </div>
 </body>
